@@ -14,6 +14,8 @@ public class NewMDIApplication extends javax.swing.JFrame {
     /**
      * Creates new form NewMDIApplication
      */
+    private MANTENIMIENTO_MAESTROS ventanamaestros;
+    private MANTENIMIENTO_ALUMNOS ventanaalumnos;
     public NewMDIApplication() {
         initComponents();
     }
@@ -30,19 +32,11 @@ public class NewMDIApplication extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
+        menucatalogos = new javax.swing.JMenu();
+        menualumnos = new javax.swing.JMenuItem();
+        menumaestros = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        botonsalida = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,66 +54,47 @@ public class NewMDIApplication extends javax.swing.JFrame {
         desktopPane.add(jDesktopPane1);
         jDesktopPane1.setBounds(0, 0, 600, 390);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        menucatalogos.setMnemonic('f');
+        menucatalogos.setText("Catalogos");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        menualumnos.setMnemonic('o');
+        menualumnos.setText("Mantenimiento Alumnos");
+        menualumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                menualumnosActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        menucatalogos.add(menualumnos);
 
-        menuBar.add(fileMenu);
+        menumaestros.setMnemonic('s');
+        menumaestros.setText("Mantenimiento Maestros");
+        menumaestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menumaestrosActionPerformed(evt);
+            }
+        });
+        menumaestros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                menumaestrosKeyPressed(evt);
+            }
+        });
+        menucatalogos.add(menumaestros);
+
+        menuBar.add(menucatalogos);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        editMenu.setText("Salida");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        botonsalida.setMnemonic('t');
+        botonsalida.setText("Salir del Sistema");
+        botonsalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonsalidaActionPerformed(evt);
+            }
+        });
+        editMenu.add(botonsalida);
 
         menuBar.add(editMenu);
-
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
-
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
 
         setJMenuBar(menuBar);
 
@@ -137,9 +112,28 @@ public class NewMDIApplication extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    private void botonsalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsalidaActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_botonsalidaActionPerformed
+
+    private void menumaestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menumaestrosActionPerformed
+        // TODO add your handling code here:
+        ventanamaestros=new MANTENIMIENTO_MAESTROS();
+        jDesktopPane1.add(ventanamaestros);
+        //ventanamaestros.setVisible(true);
+    }//GEN-LAST:event_menumaestrosActionPerformed
+
+    private void menumaestrosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_menumaestrosKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menumaestrosKeyPressed
+
+    private void menualumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menualumnosActionPerformed
+        // TODO add your handling code here:
+        ventanaalumnos=new MANTENIMIENTO_ALUMNOS();
+        jDesktopPane1.add(ventanaalumnos);
+        //ventanaalumnos.setVisible(true);
+    }//GEN-LAST:event_menualumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,22 +171,14 @@ public class NewMDIApplication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem botonsalida;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenuItem menualumnos;
+    private javax.swing.JMenu menucatalogos;
+    private javax.swing.JMenuItem menumaestros;
     // End of variables declaration//GEN-END:variables
 
 }
